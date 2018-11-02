@@ -23,3 +23,20 @@ hex_0  = hex(int(str(binary),2))[2:]
 base64_str = binascii.a2b_hex(hex_0)
 salted_str = base64.b64decode(a)
 open(r'C:\ENCRYPTED.txt','w').write(str(base64_str))
+
+#gray bits通道线索
+gray_channel = Image.open(r'C:\Users\Pahai\Desktop\challenge.png')
+data = gray_channel.load()
+bin_red = []
+for i in range(2944):
+	bin_red.append(bin(data[i,310][0])[-1])
+bin_red = ''.join(str(i) for i in bin_red)
+xor = ''.join(str(int(bin1[i])^int(bin_red[i])) for i in range(2800))
+xor = xor.replace('0','2')
+xor = xor.replace('1','0')
+xor = xor.replace('2','1')
+xor = xor[:1960]
+c= hex(int(str(xor),2))[2:]
+#d= binascii.a2b_hex(c)
+#e = hex(int(bin2))
+print(c)
