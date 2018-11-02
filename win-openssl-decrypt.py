@@ -1,6 +1,6 @@
 import itertools
 import subprocess
-
+#利用生成器，生成所有可能的key
 filename =r'C:\ENCRYPTED.txt'
 
 sets = [ ['L3','3L'], ['02','20'], ['485','584'], ['9F','F9'], ['7'] ]
@@ -17,7 +17,7 @@ keys = []
 for permutation in all_item_permutations:
     keys.append(''.join(permutation))
 #print(keys)
-
+#暴力破解
 for key in keys:
 	proc =  subprocess.Popen([r'C:\OpenSSL-Win64\bin\openssl','enc','-aes-256-cbc','-md', 'md5', '-base64','-d','-a','-k', key, '-in', filename], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	out,err = proc.communicate()
