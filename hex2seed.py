@@ -32,7 +32,7 @@ print(seed[6:])
 
 #https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt
 
-with open(r'C:\Users\Pahai\Desktop\bip39.txt') as f:
+with open(r'C:\bip39.txt') as f:
 	wordlist = [ i.strip() for i in f.readlines() ]
 	
 for i in seed[6:]:
